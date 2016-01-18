@@ -1,0 +1,16 @@
+[
+{
+  "modid": "lootbags",
+  "name": "Loot Bags",
+  "description": "Drops loot bag rewards",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Malorolam", "Tencao"],
+  "credits": "Malorolam for the original mod, Tencao for the tweaks",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
