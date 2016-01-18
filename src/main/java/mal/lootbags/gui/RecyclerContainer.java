@@ -130,7 +130,7 @@ public class RecyclerContainer extends Container{
                 slot = (Slot)this.inventorySlots.get(k);
                 itemstack1 = slot.getStack();
 
-                if (itemstack1 != null && itemstack1.getItem() == p_75135_1_.getItem() && (!p_75135_1_.getHasSubtypes() || p_75135_1_.getItemDamage() == itemstack1.getItemDamage()) && ItemStack.areItemStackTagsEqual(p_75135_1_, itemstack1))
+                if (itemstack1 != null && itemstack1.getItem() == p_75135_1_.getItem() && (!p_75135_1_.getHasSubtypes() || p_75135_1_.getMetadata() == itemstack1.getMetadata()) && ItemStack.areItemStackTagsEqual(p_75135_1_, itemstack1))
                 {
                     int l = itemstack1.stackSize + p_75135_1_.stackSize;
 

@@ -47,14 +47,13 @@ public class LootbagItem extends Item {
 		super();
 		this.setUnlocalizedName("lootbag");
 		this.maxStackSize = 1;
-		this.setMaxDamage(0);
 		this.hasSubtypes = true;
 		this.setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	public void addInformation(ItemStack is, EntityPlayer ep, List list,
 			boolean bool) {
-		switch(is.getItemDamage())
+		switch(is.getMetadata())
 		{
 		case 0:
 			list.add(EnumChatFormatting.WHITE + "Common");
@@ -91,36 +90,36 @@ public class LootbagItem extends Item {
 			break;
 		}
 		
-		if(is.getItemDamage()<5 && LootBags.emptyBags[is.getItemDamage()]!=null)
+		if(is.getMetadata()<5 && LootBags.emptyBags[is.getMetadata()]!=null)
 			list.add(EnumChatFormatting.RED + "Bag is disabled ~ Loot table is empty");
 		else
 		{
 			if(is.getTagCompound() != null && is.getTagCompound().getBoolean("generated"))
 			{
-				if(is.getItemDamage()==5)
+				if(is.getMetadata()==5)
 				{
 					list.add("\u00A7d" + "Turns out there is bacon inside...");
 				}
-				else if(is.getItemDamage()==6)
+				else if(is.getMetadata()==6)
 				{
 					list.add("\u00A7b" + "I told you my bags don't");
 					list.add("\u00A7b" + "drop beds! baconNub");
 				}
-				else if(is.getItemDamage()==7)
+				else if(is.getMetadata()==7)
 				{
 					list.add("\u00A7b" + "Everytime a random chest is placed,");
 					list.add("\u00A7b" + "a Soaryn gets more Chick Fil A.");
 				}
-				else if(is.getItemDamage()==8)
+				else if(is.getMetadata()==8)
 				{
 					list.add("\u00A7b" + "Raise your Cluckingtons!");
 				}
-				else if(is.getItemDamage()==9)
+				else if(is.getMetadata()==9)
 				{
 					list.add("\u00A7b" + "You have been banned from talking");
 					list.add("\u00A7b" + "in this channel's chat.");
 				}
-				else if(is.getItemDamage()==10)
+				else if(is.getMetadata()==10)
 				{
 					list.add(EnumChatFormatting.GREEN + "Paging Doctor Bat, paging Doctor Bat!");
 					list.add(EnumChatFormatting.GREEN + "Is there a Doctor Bat in the room?");
@@ -133,7 +132,7 @@ public class LootbagItem extends Item {
 			}
 			else
 			{
-				if(is.getItemDamage()==10)
+				if(is.getMetadata()==10)
 				{
 					list.add(EnumChatFormatting.GREEN + "Where, oh where has my little Bat gone?");
 					list.add(EnumChatFormatting.GREEN + "Oh where, oh where can he be? His cowl, his scowl,");
@@ -145,12 +144,12 @@ public class LootbagItem extends Item {
 		}
 		
 		if(Keyboard.isKeyDown(42) || Keyboard.isKeyDown(54)) {
-			if(is.getItemDamage() < 5)
+			if(is.getMetadata() < 5)
 			{
 				int mchance;
 				int pchance;
 				int lchance;
-				switch(is.getItemDamage())
+				switch(is.getMetadata())
 				{
 				case 0:
 					mchance = LootBags.MONSTERDROPCHANCES[0];
@@ -186,36 +185,36 @@ public class LootbagItem extends Item {
 				list.add("\u00A77" + "Current Drop Rates: Monster: " + String.format("%.2f", mchance*100.0f/LootBags.DROPRESOLUTION) + "%");
 				list.add("\u00A77" + "Passive: " + String.format("%.2f", pchance*100.0f/LootBags.DROPRESOLUTION) + "% Player: " + String.format("%.2f", lchance*100.0f/LootBags.DROPRESOLUTION) + "%");
 			}
-			else if(is.getItemDamage() == 5)
+			else if(is.getMetadata() == 5)
 			{
 				list.add("\u00A77" + "Three out of every four bacons agree");
 				list.add("\u00A77" + "that they don't have enough bacon.");
 				list.add("\u00A77" + "The fourth has a bag full of bacon.");
 				list.add("\u00A7b" + "(It still isn't enough bacon.)");
 			}
-			else if(is.getItemDamage() == 6)
+			else if(is.getMetadata() == 6)
 			{
 				list.add("\u00A77" + "My bags are not configured");
 				list.add("\u00A77" + "to drop beds in this pack.");
 				list.add("\u00A77" + "I am 100% certain about this.");
 				list.add(EnumChatFormatting.DARK_PURPLE + "~Malorolam");
 			}
-			else if(is.getItemDamage() == 7)
+			else if(is.getMetadata() == 7)
 			{
 				list.add("\u00A77" + "One out of ever four chests");
 				list.add("\u00A77" + "is a Soaryn chest.");
 				list.add("\u00A77" + "Only you can prevent inventory");
 				list.add("\u00A77" + "clutter by creating more.");
 			}
-			else if(is.getItemDamage() == 8)
+			else if(is.getMetadata() == 8)
 			{
 				list.add("\u00A77" + "Cluck Cluck...");
 			}
-			else if(is.getItemDamage() == 9)
+			else if(is.getMetadata() == 9)
 			{
 				list.add("\u00A77" + "(Hay) (Cha)rcoal (T)orch");
 			}
-			else if(is.getItemDamage()==10)
+			else if(is.getMetadata()==10)
 			{
 				list.add(EnumChatFormatting.DARK_GREEN + "A hero with no praise or glory");
 				list.add(EnumChatFormatting.DARK_GREEN + "Just his cape and his cave and his.... meow");
@@ -275,7 +274,7 @@ public class LootbagItem extends Item {
 			gen = is.getTagCompound().getBoolean("generated");
 		if (!gen) {
 			int numitems;
-			switch(is.getItemDamage())
+			switch(is.getMetadata())
 			{
 			case 5:
 				numitems = random.nextInt(3)+1;
@@ -301,7 +300,7 @@ public class LootbagItem extends Item {
 			NBTTagList nbtinventory = new NBTTagList();
 
 			for (int i = 0; i < numitems; i++) {
-				ItemStack inv = getLootItem(is.getItemDamage(), i, items);
+				ItemStack inv = getLootItem(is.getMetadata(), i, items);
 				items[i] = inv;
 				NBTTagCompound var4 = new NBTTagCompound();
 				var4.setInteger("Slot", i);
@@ -519,7 +518,7 @@ public class LootbagItem extends Item {
 	public ItemStack onItemRightClick(ItemStack is, World world,
 			EntityPlayer player) {
 		if (!world.isRemote && !player.isSneaking()) {
-			if(is.getItemDamage()<5 && LootBags.emptyBags[is.getItemDamage()]!=null)
+			if(is.getMetadata()<5 && LootBags.emptyBags[is.getMetadata()]!=null)
 				return is;
 			LootbagItem.generateInventory(is);
 			player.openGui(LootBags.LootBagsInstance, 0, world, 0, 0, 0);
@@ -533,7 +532,7 @@ public class LootbagItem extends Item {
 	{
 		if(!world.isRemote)
 		{
-			if(is.getItemDamage()<5 && LootBags.emptyBags[is.getItemDamage()]!=null)
+			if(is.getMetadata()<5 && LootBags.emptyBags[is.getMetadata()]!=null)
 				return false;
 			if(!player.isSneaking())
 				return false;
@@ -593,7 +592,7 @@ public class LootbagItem extends Item {
 	@Override
 	public String getUnlocalizedName(ItemStack is)
 	{
-		switch(is.getItemDamage())
+		switch(is.getMetadata())
 		{
 		case 0:
 			return "item.lootbag.common";
@@ -684,10 +683,10 @@ public class LootbagItem extends Item {
 	
 	public int getEntityLifespan(ItemStack itemStack, World world)
 	{
-		if(!(itemStack.getItemDamage() <5))
+		if(!(itemStack.getMetadata() <5))
 			return super.getEntityLifespan(itemStack, world);
 		
-		if(LootBags.emptyBags[itemStack.getItemDamage()]==null)
+		if(LootBags.emptyBags[itemStack.getMetadata()]==null)
 			return super.getEntityLifespan(itemStack, world);
 		else
 			return 1;

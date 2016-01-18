@@ -27,7 +27,7 @@ targetCompatibility = 1.8
 minecraft {
     version = "${minecraft_version}-${forge_version}"
     runDir = "eclipse"
-    mappings = "snapshot_20140925"
+    mappings = "stable_12"
 }
 
 dependencies {
@@ -64,45 +64,6 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-processResources.doLast {
-
-    description 'Copies resource files to dir FML expects resourcePack to be'
-
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    ext.srcFiles = "$projectDir/src/main/resources"
-    ext.destDir = "$projectDir/build/classes/main"
-
-    // registering inputs & outputs allow gradle to skip if UP-TO-DATE
-    inputs.files srcFiles
-    outputs.dir destDir
-
-    println 'starting processResources'
-    println 'srcFiles: ' + srcFiles
-    println 'destDir: ' + destDir
-
-    copy {
-        // replace stuff in mcmod.info, nothing else
-        from(srcFiles)
-        into(destDir)
-        include 'mcmod.info'
-            // replace version and mcversion
-        expand 'version': project.version, 'mcversion': project.minecraft.version
-
-    }
-
-    copy {
-        // copy everything else, thats not the mcmod.info
-        from(srcFiles)
-        into(destDir)
-        exclude 'mcmod.info'
-
-    }
-
 }
 
 sourceSets {

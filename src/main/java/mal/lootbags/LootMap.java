@@ -86,8 +86,8 @@ public class LootMap {
 						}
 					}
 					
-					String key = c.theItemId.getUnlocalizedName()+c.theItemId.getItemDamage();
-					
+					String key = c.theItemId.getUnlocalizedName()+c.theItemId.getMetadata();
+
 					if(!map.containsKey(key))
 					{
 						LootItem ii = new LootItem(c, BagTypes.Common, BagTypes.Legendary);
@@ -150,7 +150,7 @@ public class LootMap {
 								}
 								if(!skip)
 								{
-									String key = c.theItemId.getUnlocalizedName()+c.theItemId.getItemDamage();
+									String key = c.theItemId.getUnlocalizedName()+c.theItemId.getMetadata();
 									if(words[0].equalsIgnoreCase("record") && is.getItem() instanceof ItemRecord)
 										key = ((ItemRecord)is.getItem()).recordName;
 									
@@ -270,7 +270,7 @@ public class LootMap {
 							else
 							{
 								stack.stackSize = Integer.parseInt(words[3]);
-								stack.setItemDamage(damage);
+								stack.setMetadata(damage);
 							}
 							
 							if(stack.stackSize > stack.getMaxStackSize())
@@ -283,7 +283,7 @@ public class LootMap {
 								for(int l = 0; l < damages.size(); l++)
 								{
 									ItemStack is = stack.copy();
-									is.setItemDamage(damages.get(l));
+									is.setMetadata(damages.get(l));
 									addWhitelistItem(is, i, words[1].startsWith("record"), (stack.getItem() instanceof ItemEnchantedBook)?(words[2]):(null), Integer.parseInt(words[4]), skip);
 								}
 							}
@@ -325,7 +325,7 @@ public class LootMap {
 				tag.setBoolean("LootbagsWhitelist", true);
 			}
 			else
-				key = c.theItemId.getUnlocalizedName()+c.theItemId.getItemDamage();
+				key = c.theItemId.getUnlocalizedName()+c.theItemId.getMetadata();
 			
 			if(i == 0)
 			{

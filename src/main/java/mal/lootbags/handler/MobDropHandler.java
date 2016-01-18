@@ -2,10 +2,13 @@ package mal.lootbags.handler;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import mal.lootbags.LootBags;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -25,7 +28,7 @@ public class MobDropHandler {
 
 	public static Random random = new Random();
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void onEntityDrop(LivingDropsEvent event) {
 		if(LootBags.BAGFROMPLAYERKILL == 1)
 		{
@@ -90,7 +93,7 @@ public class MobDropHandler {
 						chance -= LootBags.PLAYERDROPCHANCES[4];
 				}
 			}
-			if (event.entityLiving instanceof EntityAnimal)
+			if (event.entityLiving instanceof IAnimals)
 			{
 				int totalweight = LootBags.PASSIVEDROPCHANCES[4]+LootBags.PASSIVEDROPCHANCES[3]+LootBags.PASSIVEDROPCHANCES[2]+LootBags.PASSIVEDROPCHANCES[1]+LootBags.PASSIVEDROPCHANCES[0];
 				
@@ -137,7 +140,7 @@ public class MobDropHandler {
 						chance -= LootBags.PASSIVEDROPCHANCES[4];
 				}
 			}
-			if (event.entityLiving instanceof EntityMob)
+			if (event.entityLiving instanceof IMob)
 			{
 				int totalweight = LootBags.MONSTERDROPCHANCES[4]+LootBags.MONSTERDROPCHANCES[3]+LootBags.MONSTERDROPCHANCES[2]+LootBags.MONSTERDROPCHANCES[1]+LootBags.MONSTERDROPCHANCES[0];
 				//System.out.println(chance + "/" + totalweight);
@@ -219,7 +222,7 @@ public class MobDropHandler {
 					chance = random.nextInt(1000);
 				}
 			}
-			if (event.entityLiving instanceof EntityAnimal)
+			if (event.entityLiving instanceof IAnimals)
 			{
 				if(!bagdrop && chance < LootBags.PASSIVEDROPCHANCES[0] && LootBags.PASSIVEDROPCHANCES[0] > 0)
 				{
@@ -251,7 +254,7 @@ public class MobDropHandler {
 					chance = random.nextInt(1000);
 				}
 			}
-			if (event.entityLiving instanceof EntityMob)
+			if (event.entityLiving instanceof IMob)
 			{
 				if(!bagdrop && chance < LootBags.MONSTERDROPCHANCES[0] && LootBags.MONSTERDROPCHANCES[0] > 0)
 				{

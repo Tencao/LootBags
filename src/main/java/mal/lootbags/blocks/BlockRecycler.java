@@ -13,7 +13,7 @@ public class BlockRecycler extends BlockContainer{
 
 	public BlockRecycler() {
 		super(Material.rock);
-		this.setBlockName("recyclerblock");
+		this.setUnlocalizedName("recyclerblock");
 		this.setHardness(1.5f);
 		this.setResistance(20f);
 		this.setCreativeTab(CreativeTabs.tabBlock);
@@ -50,7 +50,7 @@ public class BlockRecycler extends BlockContainer{
     }
 
 	@Override
-	public void registerBlockIcons(IIconRegister ir)
+	public void registerIcons(IIconRegister ir)
 	{
 		this.blockIcon = ir.registerIcon("lootbags:recyclerTexture");
 	}

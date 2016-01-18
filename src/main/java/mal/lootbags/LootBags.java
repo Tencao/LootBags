@@ -704,7 +704,7 @@ public class LootBags {
     		return false;
     	if(Item.getIdFromItem(is1.getItem()) != Item.getIdFromItem(is2.getItem()))
     		return false;
-    	if(!(is1.getItemDamage() == is2.getItemDamage() || (!alwaysUseDamage && (!is1.getHasSubtypes() && !is2.getHasSubtypes()))))
+    	if(!(is1.getMetadata() == is2.getMetadata() || (!alwaysUseDamage && (!is1.getHasSubtypes() && !is2.getHasSubtypes()))))
     		return false;
     	if(considerNBT && !ItemStack.areItemStackTagsEqual(is1, is2))
     		return false;

@@ -156,26 +156,20 @@ public class LootbagWrapper implements IInventory {
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openChest() {}
 
 	@Override
-	public void closeInventory() {
-		// TODO Auto-generated method stub
+	public void closeChest() {
 		this.markDirty();
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
 		return "lootbagstack";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
+	public boolean isCustomInventoryName() {
 		return false;
 	}
 

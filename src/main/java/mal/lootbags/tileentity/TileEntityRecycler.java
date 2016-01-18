@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileEntityRecycler extends TileEntity implements IInventory, ISidedInventory{
+public class TileEntityRecycler extends TileEntity implements ISidedInventory{
 
 	private ItemStack lootbagSlot;
 	private int lootbagCount = 0;
@@ -251,7 +251,7 @@ public class TileEntityRecycler extends TileEntity implements IInventory, ISided
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean isCustomInventoryName() {
 		return false;
 	}
 
@@ -266,12 +266,12 @@ public class TileEntityRecycler extends TileEntity implements IInventory, ISided
 	}
 
 	@Override
-	public void openInventory() {
+	public void openChest() {
 		
 	}
 
 	@Override
-	public void closeInventory() {
+	public void closeChest() {
 		
 	}
 
@@ -297,7 +297,7 @@ public class TileEntityRecycler extends TileEntity implements IInventory, ISided
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int side) {
+	public int[] getSlotsForFace(int side) {
 		int[] i = new int[getSizeInventory()];
 		for(int ii = 0; ii<i.length; ii++)
 			i[ii]=ii;
