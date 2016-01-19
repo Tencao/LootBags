@@ -5,6 +5,7 @@ import java.util.Random;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import mal.lootbags.LootBags;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -91,6 +92,54 @@ public class MobDropHandler {
 					}
 					else if(LootBags.PLAYERDROPCHANCES[4] > 0)
 						chance -= LootBags.PLAYERDROPCHANCES[4];
+				}
+			}
+			if (event.entityLiving instanceof IBossDisplayData)
+			{
+				int totalweight = LootBags.BOSSDROPCHANCES[4]+LootBags.BOSSDROPCHANCES[3]+LootBags.BOSSDROPCHANCES[2]+LootBags.BOSSDROPCHANCES[1]+LootBags.BOSSDROPCHANCES[0];
+				//System.out.println(chance + "/" + totalweight);
+
+				if(chance < totalweight)//getting a bag
+				{
+					if(chance < LootBags.BOSSDROPCHANCES[0] && LootBags.BOSSDROPCHANCES[0] > 0)
+					{
+						event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 0), random.nextInt(2) + 1);
+						return;
+					}
+					else if(LootBags.BOSSDROPCHANCES[0] > 0)
+						chance -= LootBags.BOSSDROPCHANCES[0];
+
+					if(chance < LootBags.BOSSDROPCHANCES[1] && LootBags.BOSSDROPCHANCES[1] > 0)
+					{
+						event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 1), random.nextInt(2) + 1);
+						return;
+					}
+					else if(LootBags.BOSSDROPCHANCES[1] > 0)
+						chance -= LootBags.BOSSDROPCHANCES[1];
+
+					if(chance < LootBags.BOSSDROPCHANCES[2] && LootBags.BOSSDROPCHANCES[2] > 0)
+					{
+						event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 2), random.nextInt(2) + 1);
+						return;
+					}
+					else if(LootBags.BOSSDROPCHANCES[2] > 0)
+						chance -= LootBags.BOSSDROPCHANCES[2];
+
+					if(chance < LootBags.BOSSDROPCHANCES[3] && LootBags.BOSSDROPCHANCES[3] > 0)
+					{
+						event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 3), random.nextInt(2) + 1);
+						return;
+					}
+					else if(LootBags.BOSSDROPCHANCES[3] > 0)
+						chance -= LootBags.BOSSDROPCHANCES[3];
+
+					if(chance < LootBags.BOSSDROPCHANCES[4] && LootBags.BOSSDROPCHANCES[4] > 0)
+					{
+						event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 4), random.nextInt(2) + 1);
+						return;
+					}
+					else if(LootBags.BOSSDROPCHANCES[4] > 0)
+						chance -= LootBags.BOSSDROPCHANCES[4];
 				}
 			}
 			if (event.entityLiving instanceof IAnimals)
@@ -217,6 +266,38 @@ public class MobDropHandler {
 				}
 				chance = random.nextInt(1000);
 				if(chance < LootBags.PLAYERDROPCHANCES[4] && LootBags.PLAYERDROPCHANCES[4] > 0)
+				{
+					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 4), random.nextInt(2) + 1);
+					chance = random.nextInt(1000);
+				}
+			}
+			if (event.entityLiving instanceof IBossDisplayData)
+			{
+				if(!bagdrop && chance < LootBags.BOSSDROPCHANCES[0] && LootBags.BOSSDROPCHANCES[0] > 0)
+				{
+					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 0), random.nextInt(2) + 1);
+					chance = random.nextInt(1000);
+				}
+				chance = random.nextInt(1000);
+				if(!bagdrop && chance < LootBags.BOSSDROPCHANCES[1] && LootBags.BOSSDROPCHANCES[1] > 0)
+				{
+					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 1), random.nextInt(2) + 1);
+					chance = random.nextInt(1000);
+				}
+				chance = random.nextInt(1000);
+				if(!bagdrop && chance < LootBags.BOSSDROPCHANCES[2] && LootBags.BOSSDROPCHANCES[2] > 0)
+				{
+					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 2), random.nextInt(2) + 1);
+					chance = random.nextInt(1000);
+				}
+				chance = random.nextInt(1000);
+				if(!bagdrop && chance < LootBags.BOSSDROPCHANCES[3] && LootBags.BOSSDROPCHANCES[3] > 0)
+				{
+					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 3), random.nextInt(2) + 1);
+					chance = random.nextInt(1000);
+				}
+				chance = random.nextInt(1000);
+				if(chance < LootBags.BOSSDROPCHANCES[4] && LootBags.BOSSDROPCHANCES[4] > 0)
 				{
 					event.entityLiving.entityDropItem(new ItemStack(LootBags.lootbag, 1, 4), random.nextInt(2) + 1);
 					chance = random.nextInt(1000);

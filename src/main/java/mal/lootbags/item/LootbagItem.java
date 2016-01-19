@@ -149,41 +149,49 @@ public class LootbagItem extends Item {
 				int mchance;
 				int pchance;
 				int lchance;
+				int bchance;
 				switch(is.getMetadata())
 				{
 				case 0:
 					mchance = LootBags.MONSTERDROPCHANCES[0];
 					pchance = LootBags.PASSIVEDROPCHANCES[0];
 					lchance = LootBags.PLAYERDROPCHANCES[0];
+					bchance = LootBags.BOSSDROPCHANCES[0];
 					break;
 				case 1:
 					mchance = LootBags.MONSTERDROPCHANCES[1];
 					pchance = LootBags.PASSIVEDROPCHANCES[1];
 					lchance = LootBags.PLAYERDROPCHANCES[1];
+					bchance = LootBags.BOSSDROPCHANCES[1];
 					break;
 				case 2:
 					mchance = LootBags.MONSTERDROPCHANCES[2];
 					pchance = LootBags.PASSIVEDROPCHANCES[2];
 					lchance = LootBags.PLAYERDROPCHANCES[2];
+					bchance = LootBags.BOSSDROPCHANCES[2];
 					break;
 				case 3:
 					mchance = LootBags.MONSTERDROPCHANCES[3];
 					pchance = LootBags.PASSIVEDROPCHANCES[3];
 					lchance = LootBags.PLAYERDROPCHANCES[3];
+					bchance = LootBags.BOSSDROPCHANCES[3];
 					break;
 				case 4:
 					mchance = LootBags.MONSTERDROPCHANCES[4];
 					pchance = LootBags.PASSIVEDROPCHANCES[4];
 					lchance = LootBags.PLAYERDROPCHANCES[4];
+					bchance = LootBags.BOSSDROPCHANCES[4];
 					break;
 				default:
 					mchance = LootBags.MONSTERDROPCHANCES[0];
 					pchance = LootBags.PASSIVEDROPCHANCES[0];
 					lchance = LootBags.PLAYERDROPCHANCES[0];
+					bchance = LootBags.BOSSDROPCHANCES[0];
 					break;
 				}
 				list.add("\u00A77" + "Current Drop Rates: Monster: " + String.format("%.2f", mchance*100.0f/LootBags.DROPRESOLUTION) + "%");
 				list.add("\u00A77" + "Passive: " + String.format("%.2f", pchance*100.0f/LootBags.DROPRESOLUTION) + "% Player: " + String.format("%.2f", lchance*100.0f/LootBags.DROPRESOLUTION) + "%");
+				list.add("\u00A77" + "Boss: " + String.format("%.2f", bchance*100.0f/LootBags.DROPRESOLUTION) + "%");
 			}
 			else if(is.getMetadata() == 5)
 			{
